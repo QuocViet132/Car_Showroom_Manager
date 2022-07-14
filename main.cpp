@@ -86,7 +86,17 @@ void In_Danh_Sach()                                                             
     char split_str[150];
     input_file_data.getline(split_str,150);
     string str=split_str;
-    Split_String(str,split_str,stt);
+    
+    if(str.find("?")<0 || str.find("?")>150)      // Tim vi tri cua ky tu ? de tranh vong lap vo han khi khong co du lieu trong file
+    {
+      Split_String(str,split_str,stt);
+    }
+      else if(input_file_data.eof()==true)
+      {
+        cout<<setw(57)<<right<<"Khong Co Du Lieu !"<<endl;
+        break;
+      }
+
     stt++;
   }
 
@@ -129,6 +139,8 @@ void Xoa()                    //Ham chuc nang 4
 
   if(choose=="1")           // Xoa thong tin 1 xe
   {
+    In_Danh_Sach();
+    cout<<"\n\n\t\t (?) Ten Xe Muon Xoa: ";
 
   }
     else if(choose=="2")    // Xoa toan bo du lieu
@@ -139,9 +151,9 @@ void Xoa()                    //Ham chuc nang 4
       cin>>y_n;
       if (y_n=="y")
       {
-        fstream input_file_data("data.txt",ios::trunc);
-        input_file_data<<"?";
-        input_file_data.close();
+        ofstream out_file("data.txt", ios::out | ios::trunc);
+        out_file<<"?";
+        out_file.close();
         cout<<"\n\t Du LIeu Da Xoa Thanh Cong !\n"<<endl;
       }
     }
