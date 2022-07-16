@@ -5,10 +5,9 @@
 
 using namespace std;
 
-void homepage(char &choose_number_int)
+void homepage(char &choose_number_int)                  // Ham hien thi trang chu
 {
-	//fstream input_file("F:\\Code\\C++\\Project C++\\giaodien.txt");
-	fstream input_file("giaodien.txt");
+  fstream input_file("giaodien.txt");
   while (!input_file.eof())           // Doc tung dong du lieu va in ra man hinh
   {
     char temp[255];
@@ -21,17 +20,17 @@ void homepage(char &choose_number_int)
   cin>>choose_number_int;
 }
 
-void Title_Broad()
+void Title_Broad()                              // Ham hien thi bang danh sach
 {
-  cout<<"\t +-----+---------------------+-------------------+------------------+----------+\n";
-  cout<<"\t | STT | Ten Xe              | Ten Hang SX       | Gia Ban (Ty VND) | So Luong |\n";
-  cout<<"\t +-----+---------------------+-------------------+------------------+----------+\n"; 
+  cout<<"\t +-----+--------------------------+-------------------+------------------+----------+\n";
+  cout<<"\t | STT | Ten Xe                   | Ten Hang SX       | Gia Ban (Ty VND) | So Luong |\n";
+  cout<<"\t +-----+--------------------------+-------------------+------------------+----------+\n"; 
 }
 
-void Split_String(string &str, char *split_str, int &stt)
+void Split_String(string &str, char *split_str, int &stt)      // Ham xu ly cat chuoi du lieu duoc luu trong file data
 { 
   int i, j, k, l, temp;
-  char tenxe[20], tenhang[18], giaban[16], soluong[9];
+  char tenxe[25], tenhang[18], giaban[16], soluong[9];
 
   for (i=0; i<str.find(";",i) ;i++)
   {
@@ -68,7 +67,7 @@ void Split_String(string &str, char *split_str, int &stt)
   soluong[l-(k+1)]='\0';
   
   cout<<"\t | "<<setw(4)<<left<<stt;               // Can le cho du lieu duoc in ra man hinh
-  cout<<"| "<<setw(20)<<left<<tenxe;
+  cout<<"| "<<setw(25)<<left<<tenxe;
   cout<<"| "<<setw(18)<<left<<tenhang;
   cout<<"| "<<setw(16)<<right<<giaban;
   cout<<" |"<<setw(9)<<right<<soluong<<" |"<<endl;
@@ -81,7 +80,7 @@ void In_Danh_Sach()                         // Ham chuc nang 1
   Title_Broad();
   ifstream file_data("data.txt",ios::in);
 
-  while (!file_data.eof())       // Con tro chay den cuoi file
+  while (!file_data.eof())       // Doc tung dong trong file data
   {
     char split_str[150];
     file_data.getline(split_str,150);
@@ -99,7 +98,7 @@ void In_Danh_Sach()                         // Ham chuc nang 1
   }
 
   file_data.close();
-  cout<<"\t +-----+---------------------+-------------------+------------------+----------+\n"<<endl;
+  cout<<"\t +-----+--------------------------+-------------------+------------------+----------+\n"<<endl;
 }
 
 void Them_Xe_Moi(string &car_name_str, string &company_name_str, float &price_float, int &amount_int)              // Ham chuc nang 2
@@ -150,7 +149,7 @@ void TimKiem()                // Ham chuc nang 3
     }
   }
   file_data.close();
-  cout<<"\t +-----+---------------------+-------------------+------------------+----------+\n"<<endl;
+  cout<<"\t +-----+--------------------------+-------------------+------------------+----------+\n"<<endl;
 }
 
 void Xoa()                    //Ham chuc nang 4
@@ -207,7 +206,7 @@ void Xoa()                    //Ham chuc nang 4
 
 int main()
 {
-  char choose_number_int;
+  char choose_number_int;                         // Bien luu chuc nang duoc chon
   string company_name_str, car_name_str;          // Khai bao bien ten hang Sx va ten xe
   float price_float=0;                            // Khai bao bien gia ban xe
   int amount_int=0;                               // Khai bao bien so luong xe co trong kho

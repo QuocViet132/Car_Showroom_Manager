@@ -1,1 +1,5 @@
-?
+VinFast Lux A2.0;Vinfast;0.88;100.
+KIA K5 2.0 Premium;KIA;0.929;85.
+Range Rover Velar SE;Range Rover;5.189;38.
+BMW i8 Roadster;BWM;8.2;25.
+AMG G63;Mercedes;10.95;9.
