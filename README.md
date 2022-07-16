@@ -15,7 +15,7 @@ Khi thoát chương trình dữ liệu sẽ được lưu vào file data. Có th
 [Download ZIP](https://github.com/QuocViet132/Car_Showroom_Manager/archive/refs/heads/master.zip)
 
 ## Version
-*_Version 1_* -- Đây không phải là phiên bản cuối cùng và chúng có thể sẽ được cập nhật trong tương lai.
+`Version 1` -- Đây không phải là phiên bản cuối cùng và chúng có thể sẽ được cập nhật trong tương lai.
 
 ## FQA
 Nếu có thắc mắc cần trao đổi vui lòng commit phía dưới.
