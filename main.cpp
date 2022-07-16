@@ -17,7 +17,7 @@ void homepage(char &choose_number_int)
     cout << line << endl;
   }
   input_file.close();
-  cout<<"\t \t \t Nhan Phim Chon Chuc Nang: ";
+  cout<<"\t\t\tNhan Phim Chon Chuc Nang: ";
   cin>>choose_number_int;
 }
 
@@ -74,7 +74,7 @@ void Split_String(string &str, char *split_str, int &stt)
   cout<<" |"<<setw(9)<<right<<soluong<<" |"<<endl;
 }
 
-void In_Danh_Sach()                                                                                            // Ham chuc nang 1
+void In_Danh_Sach()                         // Ham chuc nang 1
 {
   cout<<"1 - IN DANH SACH \n"<<endl;
   int stt=1;
@@ -127,9 +127,35 @@ void Them_Xe_Moi(string &car_name_str, string &company_name_str, float &price_fl
   cout<<"\n\t\tDa Luu Thong Tin. Nhan Phim Bat Ki De Hoan Tat !"<<endl;
 }
 
+void TimKiem()                // Ham chuc nang 3
+{
+  cout<<"3 - Tim Kiem:\n\t\t(?) Tim Kiem Tu Khoa: ";
+  string key_str;           //Khai bao bien tu khoa tim kiem
+  cin.ignore();
+  getline(cin,key_str);
+  cout<<"\n\t\t\t\t\tKet Qua Tim Kiem\n"<<endl;
+  Title_Broad();
+
+  fstream file_data("data.txt",ios::in);
+  while (!file_data.eof())       // Con tro chay den cuoi file
+  {
+    char split_str[150];
+    file_data.getline(split_str,150);
+    string str=split_str;
+    int position = 0, stt=1;
+    position=str.find(key_str);
+    if (position>=0 && position<=150)
+    {
+      Split_String(str,split_str,stt);
+    }
+  }
+  file_data.close();
+  cout<<"\t +-----+---------------------+-------------------+------------------+----------+\n"<<endl;
+}
+
 void Xoa()                    //Ham chuc nang 4
 {
-  cout<<"5 - Xoa\n\t (?) Ban Muon Xoa: (1) Thong tin cua 1 xe \n\t\t\t   (2) Tat ca du lieu";
+  cout<<"4 - Xoa\n\t (?) Ban Muon Xoa: (1) Thong tin cua 1 xe \n\t\t\t   (2) Tat ca du lieu";
   cout<<"\n\t Chon chuc nang: ";
   string choose;
   cin.ignore();
@@ -179,38 +205,12 @@ void Xoa()                    //Ham chuc nang 4
       else cout<<"Lua chon that bai !"<<endl;
 }
 
-void TimKiem()                // Ham chuc nang 5
-{
-  cout<<"5 - Tim Kiem:\n\t\t(?) Tim Kiem Tu Khoa: ";
-  string key_str;           //Khai bao bien tu khoa tim kiem
-  cin.ignore();
-  getline(cin,key_str);
-  cout<<"\n\t\t\t\t\tKet Qua Tim Kiem\n"<<endl;
-  Title_Broad();
-
-  fstream file_data("data.txt",ios::in);
-  while (!file_data.eof())       // Con tro chay den cuoi file
-  {
-    char split_str[150];
-    file_data.getline(split_str,150);
-    string str=split_str;
-    int position = 0, stt=1;
-    position=str.find(key_str);
-    if (position>=0 && position<=150)
-    {
-      Split_String(str,split_str,stt);
-    }
-  }
-  file_data.close();
-  cout<<"\t +-----+---------------------+-------------------+------------------+----------+\n"<<endl;
-}
-
 int main()
 {
   char choose_number_int;
   string company_name_str, car_name_str;          // Khai bao bien ten hang Sx va ten xe
-  float price_float=0;                                // Khai bao bien gia ban xe
-  int import_int=0, export_int=0, amount_int=0;   // Khai bao bien so luong xe nhap, xuat, co trong kho
+  float price_float=0;                            // Khai bao bien gia ban xe
+  int amount_int=0;                               // Khai bao bien so luong xe co trong kho
   bool checkError=true;
   
   do
@@ -235,6 +235,9 @@ int main()
         }
       case '3':
         {
+          system("cls");
+          TimKiem();
+          system("pause");
           break;
         }
       case '4':
@@ -245,21 +248,6 @@ int main()
           break;
         }
       case '5':
-        {
-          system("cls");
-          TimKiem();
-          system("pause");
-          break;
-        }
-      case '6':
-        {
-          break;
-        }
-      case '7':
-        {
-          break;
-        }
-      case '8':
         {
           checkError=false;
           system("exit");
