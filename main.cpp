@@ -8,15 +8,15 @@ using namespace std;
 void homepage(char &choose_number_int)
 {
 	//fstream input_file("F:\\Code\\C++\\Project C++\\giaodien.txt");
-	fstream input_file_gd("giaodien.txt");
-  while (!input_file_gd.eof())           // Doc tung dong du lieu va in ra man hinh
+	fstream input_file("giaodien.txt");
+  while (!input_file.eof())           // Doc tung dong du lieu va in ra man hinh
   {
     char temp[255];
-    input_file_gd.getline(temp,255);    // Du lieu trong file se duoc nhap vao bien temp
+    input_file.getline(temp,255);    // Du lieu trong file se duoc nhap vao bien temp
     string line = temp;
     cout << line << endl;
   }
-  input_file_gd.close();
+  input_file.close();
   cout<<"\t \t \t Nhan Phim Chon Chuc Nang: ";
   cin>>choose_number_int;
 }
@@ -79,35 +79,33 @@ void In_Danh_Sach()                                                             
   cout<<"1 - IN DANH SACH \n"<<endl;
   int stt=1;
   Title_Broad();
-  ifstream input_file_data("data.txt",ios::in);
+  ifstream file_data("data.txt",ios::in);
 
-  while (!input_file_data.eof())       // Con tro chay den cuoi file
+  while (!file_data.eof())       // Con tro chay den cuoi file
   {
     char split_str[150];
-    input_file_data.getline(split_str,150);
+    file_data.getline(split_str,150);
     string str=split_str;
     
     if(str.find("?")<0 || str.find("?")>150)      // Tim vi tri cua ky tu ? de tranh vong lap vo han khi khong co du lieu trong file
     {
       Split_String(str,split_str,stt);
+      stt++;
     }
-      else if(input_file_data.eof()==true)
+      else if(file_data.eof()==true)        // Neu con tro doc file o cuoi file thi thoat vong lap
       {
-        cout<<setw(57)<<right<<"Khong Co Du Lieu !"<<endl;
         break;
       }
-
-    stt++;
   }
 
-  input_file_data.close();
+  file_data.close();
   cout<<"\t +-----+---------------------+-------------------+------------------+----------+\n"<<endl;
 }
 
 void Them_Xe_Moi(string &car_name_str, string &company_name_str, float &price_float, int &amount_int)              // Ham chuc nang 2
 {
   cout<<"2 - Them Xe Moi:\n"<<endl;
-	fstream output_file("data.txt", ios::app);
+	fstream file_data("data.txt", ios::app);
   
   cin.ignore();
   cout<<"\t(?) Ten Xe: ";
@@ -123,8 +121,8 @@ void Them_Xe_Moi(string &car_name_str, string &company_name_str, float &price_fl
   cout<<"\t(?) So Luong Xe: ";
   cin>>amount_int;
 
-  output_file<<"\n"<<car_name_str<<";"<<company_name_str<<";"<<price_float<<";"<<amount_int<<".";
-  output_file.close();
+  file_data<<"\n"<<car_name_str<<";"<<company_name_str<<";"<<price_float<<";"<<amount_int<<".";
+  file_data.close();
 
   cout<<"\n\t\tDa Luu Thong Tin. Nhan Phim Bat Ki De Hoan Tat !"<<endl;
 }
@@ -140,8 +138,29 @@ void Xoa()                    //Ham chuc nang 4
   if(choose=="1")           // Xoa thong tin 1 xe
   {
     In_Danh_Sach();
-    cout<<"\n\n\t\t (?) Ten Xe Muon Xoa: ";
-
+    cout<<"\n\t\t\t (?) Ten Xe Muon Xoa: ";
+    
+    string key_str;           //Khai bao bien tu khoa tim kiem
+    cin.ignore();
+    getline(cin,key_str);
+    string str;
+    int position = 0, stt=1;
+    
+    fstream file_data("data.txt", ios::in | ios::out);
+    while(!file_data.eof())
+    {
+      getline(file_data,str);
+      position=str.find(key_str);
+      if (position>=0 && position<=150)
+      {
+        int _pointer = file_data.tellg();       // Khai bao bien luu vi tri con tro doc du lieu
+        _pointer = _pointer - 10;
+        file_data.seekp(_pointer,ios::beg);     // Thay doi vi tri hien tai cua con tro
+        file_data<<"?";
+        cout<<"\n\t\t\t    Da Xoa Thanh Cong !\n"<<endl;
+      }
+    }
+    file_data.close();
   }
     else if(choose=="2")    // Xoa toan bo du lieu
     {
@@ -151,9 +170,9 @@ void Xoa()                    //Ham chuc nang 4
       cin>>y_n;
       if (y_n=="y")
       {
-        ofstream out_file("data.txt", ios::out | ios::trunc);
-        out_file<<"?";
-        out_file.close();
+        fstream file_data("data.txt", ios::out | ios::trunc);
+        file_data<<"?";
+        file_data.close();
         cout<<"\n\t Du LIeu Da Xoa Thanh Cong !\n"<<endl;
       }
     }
@@ -169,11 +188,11 @@ void TimKiem()                // Ham chuc nang 5
   cout<<"\n\t\t\t\t\tKet Qua Tim Kiem\n"<<endl;
   Title_Broad();
 
-  ifstream input_file_data("data.txt",ios::in);
-  while (!input_file_data.eof())       // Con tro chay den cuoi file
+  fstream file_data("data.txt",ios::in);
+  while (!file_data.eof())       // Con tro chay den cuoi file
   {
     char split_str[150];
-    input_file_data.getline(split_str,150);
+    file_data.getline(split_str,150);
     string str=split_str;
     int position = 0, stt=1;
     position=str.find(key_str);
@@ -182,7 +201,7 @@ void TimKiem()                // Ham chuc nang 5
       Split_String(str,split_str,stt);
     }
   }
-  input_file_data.close();
+  file_data.close();
   cout<<"\t +-----+---------------------+-------------------+------------------+----------+\n"<<endl;
 }
 
