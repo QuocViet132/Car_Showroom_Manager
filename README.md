@@ -1,7 +1,10 @@
 # Car_Showroom_Manager
+![pagehome](https://user-images.githubusercontent.com/95084615/179445217-9ca1f2ac-cef4-4a21-b0dc-1f18a965a4c2.png)
+
 Đây là phần mềm quản lý Showroom ô tô được viết bằng ngôn ngữ ` C++ ` .
 
 ## Features
+
 Phần mềm có các chức năng cơ bản sau:
  
 1. `In Danh Sách`	->	Quản lý báo giá xe oto, xem trong kho hiện còn bao nhiêu xe.
