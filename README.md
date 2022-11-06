@@ -1,9 +1,9 @@
 # Car_Showroom_Manager
 ![pagehome](https://user-images.githubusercontent.com/95084615/179445217-9ca1f2ac-cef4-4a21-b0dc-1f18a965a4c2.png)
 
-Đây là phần mềm quản lý Showroom ô tô được viết bằng ngôn ngữ ` C++ ` .
+Đây là phần mềm quản lý Showroom ô tô giúp bạn quản lý Showroom của mình hiệu quả hơn.
 
-## Features
+## Tính năng (Features)
 
 Phần mềm có các chức năng cơ bản sau:
  
@@ -14,11 +14,8 @@ Phần mềm có các chức năng cơ bản sau:
 
 Khi thoát chương trình dữ liệu sẽ được lưu vào file data. Có thể truy xuất dữ liệu từ file data.
 
-## Installs
+## Cài đặt (Installs)
 [Download ZIP](https://github.com/QuocViet132/Car_Showroom_Manager/archive/refs/heads/master.zip)
 
-## Version
-`Version 1` -- Đây không phải là phiên bản cuối cùng và chúng có thể sẽ được cập nhật trong tương lai.
-
-## FQA
-Nếu có thắc mắc cần trao đổi vui lòng **_commit_** phía dưới.
+## Phiên bản (Version)
+`Version 1`
