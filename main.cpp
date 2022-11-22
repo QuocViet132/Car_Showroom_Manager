@@ -37,7 +37,7 @@ void Split_String(string &str, char *split_str, int &stt)      // Ham xu ly cat 
     tenxe[i]=split_str[i];
   }
     
-  tenxe[i]='\0';                          // Danh dau vi tri ket thuc mang char, ngan khong cho cac phan tu chua duoc gan in ra ki tu rac tren nam hinh
+  tenxe[i]='\0';                          // Danh dau vi tri ket thuc mang char, ngan khong cho cac phan tu chua duoc gan in ra ki tu rac tren man hinh
   temp=0;
 
   for (j=i+1; j<str.find(";",j); j++)
